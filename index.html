@@ -7,149 +7,119 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f0e8;
-    --paper: #fdfaf4;
-    --ink: #2a2520;
-    --ink-light: #6b6560;
+    --bg: #f5f0e8; --paper: #fdfaf4; --ink: #2a2520; --ink-light: #6b6560;
     --shadow: rgba(42,37,32,0.13);
-    --cat-blau:    #5b8dd9;
-    --cat-gruen:   #5aaa6a;
-    --cat-orange:  #e8954a;
-    --cat-lila:    #9b6ecf;
-    --cat-rot:     #d95f5f;
-    --cat-tuerkis: #3db8ac;
+    --cat-blau:#5b8dd9; --cat-gruen:#5aaa6a; --cat-orange:#e8954a;
+    --cat-lila:#9b6ecf; --cat-rot:#d95f5f; --cat-tuerkis:#3db8ac;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
   body::before {
-    content: ''; position: fixed; inset: 0;
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0;
   }
 
-  /* HEADER */
-  header {
-    position: relative; z-index: 1;
-    padding: 2.5rem 2rem 0.5rem;
-    max-width: 1200px; margin: 0 auto;
-    display: flex; flex-wrap: wrap;
-    align-items: flex-start; gap: 1rem;
-    justify-content: space-between;
-  }
-  .logo-area h1 { font-family: 'Caveat', cursive; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1; }
-  .logo-area p { font-size: 0.88rem; color: var(--ink-light); margin-top: 0.3rem; font-weight: 600; }
+  header { position:relative; z-index:1; padding:2.5rem 2rem 0.5rem; max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:flex-start; gap:1rem; justify-content:space-between; }
+  .logo-area h1 { font-family:'Caveat',cursive; font-size:clamp(2rem,5vw,3rem); font-weight:700; line-height:1; }
+  .logo-area p { font-size:.88rem; color:var(--ink-light); margin-top:.3rem; font-weight:600; }
+  .donate-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:.35rem; }
+  .donate-btn { display:inline-flex; align-items:center; gap:.45rem; background:#FFDD00; color:#1a1a1a; border:none; border-radius:12px; padding:.6rem 1.2rem; font-family:'Nunito',sans-serif; font-weight:800; font-size:.92rem; cursor:pointer; text-decoration:none; box-shadow:3px 3px 0 rgba(0,0,0,.14); transition:transform .15s,box-shadow .15s; white-space:nowrap; }
+  .donate-btn:hover { transform:translateY(-2px); box-shadow:4px 5px 0 rgba(0,0,0,.18); }
+  .donate-note { font-size:.7rem; color:var(--ink-light); text-align:right; font-weight:600; }
 
-  /* SPENDEN */
-  .donate-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; }
-  .donate-btn {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    background: #FFDD00; color: #1a1a1a;
-    border: none; border-radius: 12px; padding: 0.6rem 1.2rem;
-    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.92rem;
-    cursor: pointer; text-decoration: none;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.14);
-    transition: transform 0.15s, box-shadow 0.15s; white-space: nowrap;
-  }
-  .donate-btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 rgba(0,0,0,0.18); }
-  .donate-note { font-size: 0.7rem; color: var(--ink-light); text-align: right; font-weight: 600; }
+  .stats-bar { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:.8rem 2rem 0; display:flex; align-items:center; gap:1rem; }
+  .count-badge { background:var(--ink); color:var(--paper); border-radius:100px; padding:.32rem .9rem; font-size:.8rem; font-weight:800; letter-spacing:.03em; }
+  .filter-bar { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:.8rem 2rem 1.2rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+  .filter-btn { border:2px solid rgba(42,37,32,.12); border-radius:100px; padding:.38rem 1rem; font-family:'Nunito',sans-serif; font-weight:700; font-size:.8rem; cursor:pointer; transition:all .15s; background:var(--paper); color:var(--ink); box-shadow:2px 2px 0 var(--shadow); }
+  .filter-btn:hover { transform:translateY(-1px); box-shadow:3px 4px 0 var(--shadow); }
+  .filter-btn.active { color:white; border-color:transparent; }
+  .filter-btn[data-cat="alle"].active  { background:var(--ink); }
+  .filter-btn[data-cat="blau"].active    { background:var(--cat-blau); }
+  .filter-btn[data-cat="gruen"].active   { background:var(--cat-gruen); }
+  .filter-btn[data-cat="orange"].active  { background:var(--cat-orange); }
+  .filter-btn[data-cat="lila"].active    { background:var(--cat-lila); }
+  .filter-btn[data-cat="rot"].active     { background:var(--cat-rot); }
+  .filter-btn[data-cat="tuerkis"].active { background:var(--cat-tuerkis); }
 
-  /* STATS + FILTER */
-  .stats-bar { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0.8rem 2rem 0; display: flex; align-items: center; gap: 1rem; }
-  .count-badge { background: var(--ink); color: var(--paper); border-radius: 100px; padding: 0.32rem 0.9rem; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.03em; }
-  .filter-bar { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0.8rem 2rem 1.2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .filter-btn {
-    border: 2px solid rgba(42,37,32,0.12); border-radius: 100px;
-    padding: 0.38rem 1rem; font-family: 'Nunito', sans-serif;
-    font-weight: 700; font-size: 0.8rem; cursor: pointer;
-    transition: all 0.15s; background: var(--paper); color: var(--ink);
-    box-shadow: 2px 2px 0 var(--shadow);
-  }
-  .filter-btn:hover { transform: translateY(-1px); box-shadow: 3px 4px 0 var(--shadow); }
-  .filter-btn.active { color: white; border-color: transparent; }
-  .filter-btn[data-cat="alle"].active  { background: var(--ink); }
-  .filter-btn[data-cat="blau"].active    { background: var(--cat-blau); }
-  .filter-btn[data-cat="gruen"].active   { background: var(--cat-gruen); }
-  .filter-btn[data-cat="orange"].active  { background: var(--cat-orange); }
-  .filter-btn[data-cat="lila"].active    { background: var(--cat-lila); }
-  .filter-btn[data-cat="rot"].active     { background: var(--cat-rot); }
-  .filter-btn[data-cat="tuerkis"].active { background: var(--cat-tuerkis); }
-
-  /* GRID */
-  .grid { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 2rem 5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.3rem; }
-
-  /* KARTE */
-  .karte { background: var(--paper); border-radius: 14px; overflow: hidden; box-shadow: 3px 4px 0 var(--shadow); cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; border: 2px solid rgba(42,37,32,0.06); animation: fadeIn 0.3s ease both; }
-  .karte:hover { transform: translateY(-4px) rotate(0.3deg); box-shadow: 6px 9px 0 var(--shadow); }
-  .karte.hidden { display: none; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  .karte-stripe { height: 6px; }
-  .karte[data-cat="blau"]    .karte-stripe { background: var(--cat-blau); }
-  .karte[data-cat="gruen"]   .karte-stripe { background: var(--cat-gruen); }
-  .karte[data-cat="orange"]  .karte-stripe { background: var(--cat-orange); }
-  .karte[data-cat="lila"]    .karte-stripe { background: var(--cat-lila); }
-  .karte[data-cat="rot"]     .karte-stripe { background: var(--cat-rot); }
-  .karte[data-cat="tuerkis"] .karte-stripe { background: var(--cat-tuerkis); }
-  .karte-icon { width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 3rem; background: #ede8df; }
-  .karte-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-  .karte-body { padding: 0.85rem 1rem 1rem; }
-  .karte-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; }
-  .karte-cat { font-size: 0.67rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
-  .karte-dauer { font-size: 0.67rem; font-weight: 700; color: var(--ink-light); white-space: nowrap; }
-  .karte[data-cat="blau"]    .karte-cat { color: var(--cat-blau); }
-  .karte[data-cat="gruen"]   .karte-cat { color: var(--cat-gruen); }
-  .karte[data-cat="orange"]  .karte-cat { color: var(--cat-orange); }
-  .karte[data-cat="lila"]    .karte-cat { color: var(--cat-lila); }
-  .karte[data-cat="rot"]     .karte-cat { color: var(--cat-rot); }
-  .karte[data-cat="tuerkis"] .karte-cat { color: var(--cat-tuerkis); }
-  .karte-title { font-family: 'Caveat', cursive; font-size: 1.22rem; font-weight: 700; line-height: 1.15; }
-  .karte-sub { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.2rem; line-height: 1.4; }
-  .energie { display: flex; gap: 3px; margin-top: 0.5rem; }
-  .e-dot { width: 8px; height: 8px; border-radius: 50%; background: #d0c9be; }
-  .e-dot.on { background: var(--dot-color, #999); }
+  .grid { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 2rem 5rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:1.3rem; }
+  .karte { background:var(--paper); border-radius:14px; overflow:hidden; box-shadow:3px 4px 0 var(--shadow); cursor:pointer; transition:transform .18s,box-shadow .18s; border:2px solid rgba(42,37,32,.06); animation:fadeIn .3s ease both; }
+  .karte:hover { transform:translateY(-4px) rotate(.3deg); box-shadow:6px 9px 0 var(--shadow); }
+  .karte.hidden { display:none; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+  .karte-stripe { height:6px; }
+  .karte[data-cat="blau"]    .karte-stripe { background:var(--cat-blau); }
+  .karte[data-cat="gruen"]   .karte-stripe { background:var(--cat-gruen); }
+  .karte[data-cat="orange"]  .karte-stripe { background:var(--cat-orange); }
+  .karte[data-cat="lila"]    .karte-stripe { background:var(--cat-lila); }
+  .karte[data-cat="rot"]     .karte-stripe { background:var(--cat-rot); }
+  .karte[data-cat="tuerkis"] .karte-stripe { background:var(--cat-tuerkis); }
+  .karte-img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:#ede8df; }
+  .karte-icon { width:100%; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:3rem; background:#ede8df; }
+  .karte-body { padding:.85rem 1rem 1rem; }
+  .karte-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:.25rem; }
+  .karte-cat { font-size:.67rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+  .karte-dauer { font-size:.67rem; font-weight:700; color:var(--ink-light); white-space:nowrap; }
+  .karte[data-cat="blau"]    .karte-cat { color:var(--cat-blau); }
+  .karte[data-cat="gruen"]   .karte-cat { color:var(--cat-gruen); }
+  .karte[data-cat="orange"]  .karte-cat { color:var(--cat-orange); }
+  .karte[data-cat="lila"]    .karte-cat { color:var(--cat-lila); }
+  .karte[data-cat="rot"]     .karte-cat { color:var(--cat-rot); }
+  .karte[data-cat="tuerkis"] .karte-cat { color:var(--cat-tuerkis); }
+  .karte-title { font-family:'Caveat',cursive; font-size:1.22rem; font-weight:700; line-height:1.15; }
+  .karte-sub { font-size:.75rem; color:var(--ink-light); margin-top:.2rem; line-height:1.4; }
+  .energie { display:flex; gap:3px; margin-top:.5rem; }
+  .e-dot { width:8px; height:8px; border-radius:50%; background:#d0c9be; }
+  .e-dot.on { background:var(--dot-color,#999); }
 
   /* MODAL */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(42,37,32,0.55); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.22s; }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal { background: var(--paper); border-radius: 18px; max-width: 820px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 8px 12px 0 rgba(42,37,32,0.2); border: 2px solid rgba(42,37,32,0.08); transform: scale(0.95) translateY(10px); transition: transform 0.22s; position: relative; }
-  .modal-overlay.open .modal { transform: scale(1) translateY(0); }
-  .modal-stripe { height: 8px; border-radius: 16px 16px 0 0; }
-  .modal-stripe.blau    { background: var(--cat-blau); }
-  .modal-stripe.gruen   { background: var(--cat-gruen); }
-  .modal-stripe.orange  { background: var(--cat-orange); }
-  .modal-stripe.lila    { background: var(--cat-lila); }
-  .modal-stripe.rot     { background: var(--cat-rot); }
-  .modal-stripe.tuerkis { background: var(--cat-tuerkis); }
-  .modal-header { padding: 1.4rem 1.5rem 0.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-  .modal-header-left { flex: 1; }
-  .modal-cat-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .modal-title { font-family: 'Caveat', cursive; font-size: 2rem; font-weight: 700; line-height: 1.1; }
-  .modal-subtitle { font-size: 0.88rem; color: var(--ink-light); margin-top: 0.3rem; }
-  .modal-close { width: 32px; height: 32px; border-radius: 50%; border: 2px solid rgba(42,37,32,0.15); background: var(--paper); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: background 0.15s; color: var(--ink); flex-shrink: 0; margin-top: 2px; }
-  .modal-close:hover { background: var(--ink); color: var(--paper); }
-  .modal-body { padding: 0 1.5rem 2rem; display: grid; gap: 1rem; }
-  .modal-img { width: 100%; border-radius: 10px; border: 1.5px solid rgba(42,37,32,0.08); display: block; margin-bottom: 0.5rem; }
-  .modal-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 0.8rem 1.1rem; background: rgba(42,37,32,0.04); border-radius: 10px; }
-  .stat-item { display: flex; flex-direction: column; gap: 0.15rem; }
-  .stat-label { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-light); }
-  .stat-value { font-size: 0.86rem; font-weight: 700; }
-  .modal-section { background: rgba(42,37,32,0.04); border-radius: 10px; padding: 1rem 1.1rem; }
-  .modal-section h3 { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.6rem; }
-  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .steps-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.5rem; align-items: baseline; }
-  .step-num { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.74rem; font-weight: 800; color: white; flex-shrink: 0; }
-  .step-text { font-size: 0.87rem; line-height: 1.5; }
-  .step-quote { font-style: italic; color: var(--ink-light); font-size: 0.81rem; margin-top: 0.15rem; }
-  .tags-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .tag { padding: 0.25rem 0.7rem; border-radius: 100px; font-size: 0.76rem; font-weight: 700; background: rgba(42,37,32,0.07); color: var(--ink); }
-  .tag.pos { background: rgba(90,170,106,0.15); color: #347a42; }
-  .tag.neg { background: rgba(217,95,95,0.15); color: #a83535; }
-  .fix-list { display: flex; flex-direction: column; gap: 0.6rem; }
-  .fix-item { font-size: 0.85rem; line-height: 1.55; }
-  .fix-item strong { font-weight: 800; }
-  .empty { grid-column: 1/-1; text-align: center; padding: 4rem 0; font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--ink-light); display: none; }
+  .modal-overlay { position:fixed; inset:0; background:rgba(42,37,32,.55); backdrop-filter:blur(4px); z-index:100; display:flex; align-items:center; justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .22s; }
+  .modal-overlay.open { opacity:1; pointer-events:all; }
+  .modal { background:var(--paper); border-radius:18px; max-width:860px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:8px 12px 0 rgba(42,37,32,.2); border:2px solid rgba(42,37,32,.08); transform:scale(.95) translateY(10px); transition:transform .22s; position:relative; }
+  .modal-overlay.open .modal { transform:scale(1) translateY(0); }
+  .modal-stripe { height:8px; border-radius:16px 16px 0 0; }
+  .modal-stripe.blau    { background:var(--cat-blau); }
+  .modal-stripe.gruen   { background:var(--cat-gruen); }
+  .modal-stripe.orange  { background:var(--cat-orange); }
+  .modal-stripe.lila    { background:var(--cat-lila); }
+  .modal-stripe.rot     { background:var(--cat-rot); }
+  .modal-stripe.tuerkis { background:var(--cat-tuerkis); }
+  .modal-header { padding:1.4rem 1.5rem .5rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+  .modal-cat-label { font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.3rem; }
+  .modal-title { font-family:'Caveat',cursive; font-size:2rem; font-weight:700; line-height:1.1; }
+  .modal-subtitle { font-size:.88rem; color:var(--ink-light); margin-top:.3rem; }
+  .modal-close { width:32px; height:32px; border-radius:50%; border:2px solid rgba(42,37,32,.15); background:var(--paper); cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:background .15s; color:var(--ink); flex-shrink:0; margin-top:2px; }
+  .modal-close:hover { background:var(--ink); color:var(--paper); }
+  .modal-body { padding:0 1.5rem 2rem; display:grid; gap:1rem; }
 
-  @media (max-width: 600px) {
-    header, .filter-bar, .stats-bar, .grid { padding-left: 1rem; padding-right: 1rem; }
+  /* Bilder im Modal – umschaltbar */
+  .modal-imgs { display:grid; gap:.8rem; }
+  .modal-imgs img { width:100%; border-radius:10px; border:1.5px solid rgba(42,37,32,.08); display:block; cursor:pointer; transition:opacity .15s; }
+  .modal-imgs img.collapsed { display:none; }
+  .img-toggle-btn { display:inline-flex; align-items:center; gap:.4rem; margin-top:-.2rem; padding:.35rem .9rem; border-radius:100px; background:var(--ink); color:var(--paper); font-size:.78rem; font-weight:700; border:none; cursor:pointer; transition:opacity .15s; }
+  .img-toggle-btn:hover { opacity:.8; }
+
+  .modal-stats { display:flex; gap:1.5rem; flex-wrap:wrap; padding:.8rem 1.1rem; background:rgba(42,37,32,.04); border-radius:10px; }
+  .stat-item { display:flex; flex-direction:column; gap:.15rem; }
+  .stat-label { font-size:.66rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-light); }
+  .stat-value { font-size:.86rem; font-weight:700; }
+  .modal-section { background:rgba(42,37,32,.04); border-radius:10px; padding:1rem 1.1rem; }
+  .modal-section h3 { font-size:.68rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-light); margin-bottom:.6rem; }
+  .steps-list { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+  .steps-list li { display:grid; grid-template-columns:2rem 1fr; gap:.5rem; align-items:baseline; }
+  .step-num { width:1.5rem; height:1.5rem; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:.74rem; font-weight:800; color:white; flex-shrink:0; }
+  .step-text { font-size:.87rem; line-height:1.5; }
+  .step-quote { font-style:italic; color:var(--ink-light); font-size:.81rem; margin-top:.15rem; }
+  .tags-row { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .tag { padding:.25rem .7rem; border-radius:100px; font-size:.76rem; font-weight:700; background:rgba(42,37,32,.07); color:var(--ink); }
+  .tag.pos { background:rgba(90,170,106,.15); color:#347a42; }
+  .tag.neg { background:rgba(217,95,95,.15); color:#a83535; }
+  .fix-list { display:flex; flex-direction:column; gap:.6rem; }
+  .fix-item { font-size:.85rem; line-height:1.55; }
+  .fix-item strong { font-weight:800; }
+  .empty { grid-column:1/-1; text-align:center; padding:4rem 0; font-family:'Caveat',cursive; font-size:1.5rem; color:var(--ink-light); display:none; }
+
+  @media (max-width:600px) {
+    header,.filter-bar,.stats-bar,.grid { padding-left:1rem; padding-right:1rem; }
   }
 </style>
 </head>
@@ -161,32 +131,20 @@
     <p>Coaching-Tools auf einen Blick</p>
   </div>
   <div class="donate-wrap">
-    <!--
-      ════════════════════════════════════════════════════
-      SPENDEN-LINK – bitte anpassen:
-
-      Ko-fi:            https://ko-fi.com/kathacoacht
-
-      Ersetze den href-Wert unten.
-      ════════════════════════════════════════════════════
-    -->
-
-    <a href='https://ko-fi.com/H2H31VE0E4' 
-	   target='_blank'>
-	   <img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-	
-    <span class="donate-note"></span>
+    <!-- Ersetze DEIN-USERNAME mit deinem Buy Me a Coffee / PayPal.me / Ko-fi Link -->
+    <a class="donate-btn" href="https://buymeacoffee.com/DEIN-USERNAME" target="_blank" rel="noopener noreferrer">
+      <span>☕</span> Buy me a coffee
+    </a>
+    <span class="donate-note">Karten sind kostenlos &nbsp;·&nbsp; Spende freiwillig</span>
   </div>
 </header>
 
 <div class="stats-bar">
   <span class="count-badge" id="count-badge">— Karten</span>
 </div>
-
 <div class="filter-bar" id="filter-bar">
   <button class="filter-btn active" data-cat="alle">Alle</button>
 </div>
-
 <div class="grid" id="grid">
   <div class="empty" id="empty-state">Keine Karten in dieser Kategorie.</div>
 </div>
@@ -195,7 +153,7 @@
   <div class="modal">
     <div class="modal-stripe" id="modal-stripe"></div>
     <div class="modal-header">
-      <div class="modal-header-left">
+      <div>
         <div class="modal-cat-label" id="modal-cat"></div>
         <div class="modal-title" id="modal-title"></div>
         <div class="modal-subtitle" id="modal-subtitle"></div>
@@ -208,16 +166,10 @@
 
 <script>
 /* ================================================================
-   KARTEN-DATEN – alle 12 Methoden aus dem PDF
-
-   Neue Karte hinzufügen:
-   1. Block unten kopieren (inkl. Komma am Ende)
-   2. Felder ausfüllen
-   3. bild: "" → Pfad zur JPG-Datei eintragen sobald vorhanden,
-      z.B. "karten/skalierung.jpg"
-
-   farbe: "blau" | "gruen" | "lila" | "tuerkis" | "rot" | "orange"
-   energie: 1 | 2 | 3
+   KARTEN-DATEN
+   bild:  Hauptkarte (Vorschau + Modal oben)
+   bild2: Textkarte  (im Modal aufklappbar)
+   Pfade exakt wie Dateien im Ordner "Methodenkarten" heißen.
 ================================================================ */
 const karten = [
   {
@@ -225,7 +177,9 @@ const karten = [
     titel: "Skalierung",
     untertitel: "Veränderung messbar machen und durch kleine Schritte konkret gestalten",
     kategorie: "Zielorientierung", farbe: "blau", icon: "📊",
-    bild: "Methodenkarten/Skalierung.jpg", dauer: "10 Min", energie: 2,
+    bild:  "Methodenkarten/Skalierung.jpg",
+    bild2: "",
+    dauer: "10 Min", energie: 2,
     ausfuehrung: ["klar, konkret", "wertschätzend", "realistisch"],
     schritte: [
       { titel: "Skala definieren", zitat: "„Auf einer Skala von 1 bis 10: 1 = [Problem maximal], 10 = [Ziel erreicht]…"" },
@@ -246,7 +200,9 @@ const karten = [
     titel: "Wunderfrage",
     untertitel: "Die Zukunft ohne Restriktionen erleben und konkrete Ziele oder Bedürfnisse entdecken",
     kategorie: "Lösungsfokus", farbe: "gruen", icon: "✨",
-    bild: "Methodenkarten/Wunderfrage", dauer: "15 Min", energie: 3,
+    bild:  "Methodenkarten/Wunderfrage.jpg",
+    bild2: "Methodenkarten/Wunderfrage - Text.jpg",
+    dauer: "15 Min", energie: 3,
     ausfuehrung: ["neugierig", "ruhig und flüssig", "Zeit geben"],
     schritte: [
       { titel: "Imaginations-Set-Up", zitat: "„Ich möchte Sie zu einem Gedankenexperiment einladen…"" },
@@ -267,7 +223,9 @@ const karten = [
     titel: "Aktienkurs",
     untertitel: "Lebens- und Entwicklungszusammenhänge visualisieren, um Prognosen und Entscheidungen zu treffen",
     kategorie: "Zielorientierung", farbe: "blau", icon: "📈",
-    bild: "Methodenkarten/Aktienkurs.jpg", dauer: "25 Min", energie: 2,
+    bild:  "Methodenkarten/Aktienkurs.jpg",
+    bild2: "",
+    dauer: "25 Min", energie: 2,
     ausfuehrung: ["analytisch, strukturiert", "Zeit für Betrachtung"],
     schritte: [
       { titel: "Set-Up und Achsen", zitat: "„Ich lade Sie ein, Ihre Lebensentwicklung wie einen Aktienkurs zu zeichnen." x = Zeit, y = Ausprägung" },
@@ -288,7 +246,9 @@ const karten = [
     titel: "Vision Pensionierung",
     untertitel: "Kurze Gedankenreise, um grundsätzliche Interessen, Bedürfnisse, Wünsche und Werte zu identifizieren",
     kategorie: "Lösungsfokus", farbe: "gruen", icon: "🔭",
-    bild: "Methodenkarten/Vision Pensionierung.jpg", dauer: "10 Min", energie: 1,
+    bild:  "Methodenkarten/Vision Pensionierung.jpg",
+    bild2: "Methodenkarten/Vision Pensionierung - Text.jpg",
+    dauer: "10 Min", energie: 1,
     ausfuehrung: ["neugierige Haltung", "ruhig und langsam", "Zeit geben"],
     schritte: [
       { titel: "Zeitreise-Set-Up", zitat: "„Ich lade Sie zu einer besonderen Zeitreise ein. Wir springen an das Ende Ihres Berufslebens…"" },
@@ -309,7 +269,9 @@ const karten = [
     titel: "Märchentool",
     untertitel: "Probleme in Fiktion verpacken, um mit Abstand kreative Lösungen zu entdecken",
     kategorie: "Kreativität", farbe: "lila", icon: "📖",
-    bild: "Methodenkarten/Märchentool.jpg", dauer: "25 Min", energie: 1,
+    bild:  "Methodenkarten/Märchentool.jpg",
+    bild2: "",
+    dauer: "25 Min", energie: 1,
     ausfuehrung: ["spielerisch", "im Märchen bleiben", "Klient:in Lösung finden lassen"],
     schritte: [
       { titel: "Format finden", zitat: "„In welchem Genre möchten Sie Ihre Geschichte erzählen? Vielleicht ein Märchen, Film/Serie …"" },
@@ -322,7 +284,7 @@ const karten = [
     wann_nein: ["Akute Trauma-Themen", "Klient:in findet keinen Zugang zu Kreativität"],
     trigger: ["„Ich drehe mich im Kreis…"", "„Ich sehe keinen Ausweg…"", "„Alles fühlt sich festgefahren an.""],
     fixes: [
-      { problem: "Klient:in zu nah an Realität und analytisch", fix: "„Bleiben Sie in der Geschichte. Wie heißt die Person im Märchen?"" },
+      { problem: "Klient:in zu nah an Realität", fix: "„Bleiben Sie in der Geschichte. Wie heißt die Person im Märchen?"" },
       { problem: "Klient:in ist zu schnell im Happy End", fix: "„Erzählen Sie erst das ganze Märchen bis zur Krise. In 5 Schritten."" }
     ]
   },
@@ -331,10 +293,12 @@ const karten = [
     titel: "Analoges Arbeiten",
     untertitel: "Durch Metaphern / Bilder emotionalen Abstand gewinnen und kreative Lösungen entdecken",
     kategorie: "Kreativität", farbe: "lila", icon: "🪐",
-    bild: "Methodenkarten/analoges Arbeiten.jpg", dauer: "25 Min", energie: 1,
+    bild:  "",
+    bild2: "",
+    dauer: "25 Min", energie: 1,
     ausfuehrung: ["spielerisch", "neugierig", "im Bild halten"],
     schritte: [
-      { titel: "Metapher wählen", zitat: "„Wenn Ihr Thema / Ihre Situation etwas anderes wäre, was wäre es dann?" Alternativ vorgeben: Planet, Haus, Schiff, Auto …" },
+      { titel: "Metapher wählen", zitat: "„Wenn Ihr Thema / Ihre Situation etwas anderes wäre, was wäre es dann?" Alternativ: Planet, Haus, Schiff, Auto …" },
       { titel: "Ist-Zustand im Bild", zitat: "„Beschreiben Sie die Situation in / auf [...]"" },
       { titel: "Veränderung im Bild", zitat: "„Was müsste sich im Bild ändern, damit es gut wird?" → ermutigen: „Alles ist möglich"" },
       { titel: "Transfer", zitat: "„Inspiriert durch diesen […], welche Lösungen fallen Ihnen ein?"" }
@@ -352,7 +316,9 @@ const karten = [
     titel: "Hypnotrance",
     untertitel: "Durch Entspannung und innere Bilder Zugang zum Unbewussten und zu Ressourcen schaffen",
     kategorie: "Körper & Trance", farbe: "tuerkis", icon: "🌀",
-    bild: "Methodenkarten/Hypnotrance.jpg", dauer: "20 Min", energie: 1,
+    bild:  "Methodenkarten/Hypnotrance.jpg",
+    bild2: "",
+    dauer: "20 Min", energie: 1,
     ausfuehrung: ["ruhig, sanft", "SEHR langsam", "haltgebend"],
     schritte: [
       { titel: "Rahmen und Sicherheit schaffen", zitat: "Kontrakt: „Sie können jederzeit die Augen öffnen und aussteigen"" },
@@ -373,7 +339,9 @@ const karten = [
     titel: "Sicherer Ort",
     untertitel: "Inneren Rückzugsort schaffen für Sicherheit, Entspannung und Ressourcen-Zugang",
     kategorie: "Körper & Trance", farbe: "tuerkis", icon: "🏝️",
-    bild: "Methodenkarten/sicherer Ort.jpg", dauer: "15 Min", energie: 1,
+    bild:  "Methodenkarten/Sicherer Ort - Text.jpg",
+    bild2: "",
+    dauer: "15 Min", energie: 1,
     ausfuehrung: ["sehr langsam sprechen", "Pausen (aus)halten"],
     schritte: [
       { titel: "Rahmen schaffen, einstimmen", zitat: "„Machen Sie es sich bequem, schließen Sie die Augen…" → Position finden" },
@@ -394,7 +362,9 @@ const karten = [
     titel: "Ressourcen-Coaching",
     untertitel: "Vorhandene Stärken, Fähigkeiten und positive Erfahrungen re-aktivieren",
     kategorie: "Lösungsfokus", farbe: "gruen", icon: "🗝️",
-    bild: "Methodenkarten/Ressourcen-Coaching.jpg", dauer: "20 Min", energie: 2,
+    bild:  "Methodenkarten/Ressourcen-Coaching.jpg",
+    bild2: "",
+    dauer: "20 Min", energie: 2,
     ausfuehrung: ["wertschätzend", "konkret"],
     schritte: [
       { titel: "Ressource identifizieren", zitat: "„Welche Eigenschaft oder Fähigkeit oder Stärke bräuchten Sie aus sich selbst heraus, damit Sie dieses XYZ erreichen können?"" },
@@ -415,7 +385,9 @@ const karten = [
     titel: "Ankern",
     untertitel: "Positive Zustände über einen Trigger (Anker) jederzeit abrufbar machen",
     kategorie: "Körper & Trance", farbe: "tuerkis", icon: "⚓",
-    bild: ""Methodenkarten/Ankern.jpg", dauer: "10 Min", energie: 2,
+    bild:  "Methodenkarten/Ankern.jpg",
+    bild2: "",
+    dauer: "10 Min", energie: 2,
     ausfuehrung: ["—"],
     schritte: [
       { titel: "Ankervarianten erklären", zitat: "kinästhetisch, visuell, auditiv – erklären, anbieten, wählen lassen" },
@@ -425,7 +397,7 @@ const karten = [
     ],
     wann_ja: ["Vor herausfordernden Situationen", "Universalressource (Stress-Management, Leistungsoptimierung)"],
     wann_nein: ["Tiefe emotionale Verletzungen (zu oberflächlich)"],
-    trigger: ["„Ich weiß, ich kann das – aber im Moment X ist es weg."", "„Wie kann ich in stressigen Situationen ruhig bleiben?"", "„Ich brauche einen Schalter für [Zustand].""],
+    trigger: ["„Ich weiß, ich kann das – aber im Moment X ist es weg."", "„Wie kann ich in stressigen Situationen ruhig bleiben?""],
     fixes: [
       { problem: "Anker funktioniert nicht", fix: "Intensität steigern, nochmal setzen. Oder: anderen Anker-Kanal (statt Berührung → Wort)" }
     ]
@@ -435,7 +407,9 @@ const karten = [
     titel: "Ich-Botschaft",
     untertitel: "Bedürfnisse und Gefühle klar kommunizieren ohne Vorwürfe und Eskalation",
     kategorie: "Kommunikation", farbe: "rot", icon: "💬",
-    bild: ""Methodenkarten/Ich-Botschaft.jpg", dauer: "15–20 Min", energie: 3,
+    bild:  "Methodenkarten/Ich-Botschaft.jpg",
+    bild2: "",
+    dauer: "15–20 Min", energie: 3,
     ausfuehrung: ["strukturierend", "Vorwürfe konsequent eliminieren"],
     schritte: [
       { titel: "Beobachtung", zitat: "„Wenn ich sehe, dass…"" },
@@ -456,7 +430,9 @@ const karten = [
     titel: "4-Ebenen-Konfliktanalyse",
     untertitel: "Konflikte systematisch auf vier Ebenen analysieren, um Gemeinsamkeiten auf tieferer Ebene zu finden",
     kategorie: "Konflikt", farbe: "orange", icon: "🔍",
-    bild: ""Methodenkarten/4-Ebenen-Konfliktanalyse.jpg", dauer: "15–20 Min", energie: 3,
+    bild:  "Methodenkarten/4-Ebenen-Konfliktanalyse.jpg",
+    bild2: "",
+    dauer: "15–20 Min", energie: 3,
     ausfuehrung: ["neutral, nicht wertend", "schematisch"],
     schritte: [
       { titel: "Position (A + B)", zitat: "„Das will ich!" – Du-Botschaft, Angriff, BILD-Schlagzeile" },
@@ -475,27 +451,22 @@ const karten = [
   }
 ];
 
-// Farb-Mapping
 const farbVar = { blau:'#5b8dd9', gruen:'#5aaa6a', orange:'#e8954a', lila:'#9b6ecf', rot:'#d95f5f', tuerkis:'#3db8ac' };
 
-// ── Filter ───────────────────────────────────────────────────────
 function buildFilter() {
   const bar = document.getElementById('filter-bar');
   const seen = new Set();
-  // Sammle einzigartige farbe+kategorie Paare in Reihenfolge
-  const pairs = [];
   karten.forEach(k => {
-    if (!seen.has(k.farbe)) { seen.add(k.farbe); pairs.push({ farbe: k.farbe, label: k.kategorie }); }
-  });
-  // Finde alle Kategorien pro Farbe (für Label)
-  pairs.forEach(p => {
-    const cats = [...new Set(karten.filter(k => k.farbe === p.farbe).map(k => k.kategorie))];
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn';
-    btn.dataset.cat = p.farbe;
-    btn.textContent = cats.join(' / ');
-    btn.addEventListener('click', () => filterBy(p.farbe, btn));
-    bar.appendChild(btn);
+    if (!seen.has(k.farbe)) {
+      seen.add(k.farbe);
+      const cats = [...new Set(karten.filter(x => x.farbe === k.farbe).map(x => x.kategorie))];
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.dataset.cat = k.farbe;
+      btn.textContent = cats.join(' / ');
+      btn.addEventListener('click', () => filterBy(k.farbe, btn));
+      bar.appendChild(btn);
+    }
   });
 }
 
@@ -512,7 +483,6 @@ function filterBy(cat, btn) {
   document.getElementById('empty-state').style.display = count === 0 ? 'block' : 'none';
 }
 
-// ── Grid ─────────────────────────────────────────────────────────
 function buildGrid() {
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty-state');
@@ -523,7 +493,9 @@ function buildGrid() {
     el.style.animationDelay = (i * 0.04) + 's';
     const color = farbVar[k.farbe];
     const eDots = [1,2,3].map(n => `<div class="e-dot${n<=k.energie?' on':''}" ${n<=k.energie?`style="--dot-color:${color}"`:''}></div>`).join('');
-    const preview = k.bild ? `<img class="karte-img" src="${k.bild}" alt="${k.titel}" loading="lazy">` : `<div class="karte-icon">${k.icon}</div>`;
+    const preview = k.bild
+      ? `<img class="karte-img" src="${k.bild}" alt="${k.titel}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">\n<div class="karte-icon" style="display:none">${k.icon}</div>`
+      : `<div class="karte-icon">${k.icon}</div>`;
     el.innerHTML = `
       <div class="karte-stripe"></div>${preview}
       <div class="karte-body">
@@ -538,7 +510,6 @@ function buildGrid() {
   document.getElementById('count-badge').textContent = karten.length + ' Karten';
 }
 
-// ── Modal ─────────────────────────────────────────────────────────
 function openModal(k) {
   const color = farbVar[k.farbe];
   document.getElementById('modal-stripe').className = 'modal-stripe ' + k.farbe;
@@ -552,11 +523,19 @@ function openModal(k) {
       <span class="step-num" style="background:${color}">${i+1}</span>
       <div><div class="step-text"><strong>${s.titel}</strong></div>${s.zitat?`<div class="step-quote">${s.zitat}</div>`:''}</div>
     </li>`).join('');
-
   const eDots = [1,2,3].map(n=>`<div class="e-dot${n<=k.energie?' on':''}" ${n<=k.energie?`style="--dot-color:${color}"`:''}></div>`).join('');
 
+  // Bilder-Block: Hauptkarte + optionale Textkarte
+  let bilderHtml = '';
+  if (k.bild || k.bild2) {
+    const hauptbild = k.bild ? `<img src="${k.bild}" alt="${k.titel}" id="modal-hauptbild">` : '';
+    const textbild  = k.bild2 ? `<img src="${k.bild2}" alt="${k.titel} – Text" id="modal-textbild" class="collapsed">` : '';
+    const toggleBtn = k.bild2 ? `<button class="img-toggle-btn" id="img-toggle">📄 Textversion anzeigen</button>` : '';
+    bilderHtml = `<div class="modal-imgs">${hauptbild}${textbild}</div>${toggleBtn}`;
+  }
+
   document.getElementById('modal-body').innerHTML = `
-    ${k.bild?`<img class="modal-img" src="${k.bild}" alt="${k.titel}">` : ''}
+    ${bilderHtml}
     <div class="modal-stats">
       <div class="stat-item"><span class="stat-label">Dauer</span><span class="stat-value">⏱ ${k.dauer}</span></div>
       <div class="stat-item"><span class="stat-label">Energie</span><span class="stat-value" style="display:flex;gap:4px;margin-top:3px">${eDots}</span></div>
@@ -570,6 +549,18 @@ function openModal(k) {
     ${k.trigger.length?`<div class="modal-section"><h3>Typische Klient:in-Aussagen</h3><div class="tags-row">${k.trigger.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`:''}
     ${k.fixes.length?`<div class="modal-section"><h3>Was tue ich, wenn…?</h3><div class="fix-list">${k.fixes.map(f=>`<div class="fix-item"><strong>Situation:</strong> ${f.problem}<br><strong>Fix:</strong> ${f.fix}</div>`).join('')}</div></div>`:''}
   `;
+
+  // Toggle-Button Logik
+  const toggleBtn = document.getElementById('img-toggle');
+  if (toggleBtn) {
+    let textVisible = false;
+    toggleBtn.addEventListener('click', () => {
+      textVisible = !textVisible;
+      document.getElementById('modal-textbild').classList.toggle('collapsed', !textVisible);
+      toggleBtn.textContent = textVisible ? '🖼 Hauptkarte anzeigen' : '📄 Textversion anzeigen';
+    });
+  }
+
   document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
