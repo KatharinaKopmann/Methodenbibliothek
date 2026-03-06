@@ -12,10 +12,10 @@ body{font-family:Nunito,sans-serif;background:#f7f7f5;color:var(--ink);min-heigh
 header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-start;gap:1rem;justify-content:space-between}
 .logo h1{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1;letter-spacing:0.07em;text-transform:uppercase;color:#111111}
 .logo p{font-family:'Gaegu',cursive;font-size:1.15rem;color:var(--accent);margin-top:.1rem;font-weight:700;letter-spacing:-0.01em}
-.donate{display:flex;flex-direction:column;align-items:flex-end;gap:.35rem}
-.donate a{display:inline-flex;align-items:center;gap:.45rem;background:var(--accent);color:#ffffff;border:none;border-radius:12px;padding:.6rem 1.2rem;font-family:Nunito,sans-serif;font-weight:800;font-size:.92rem;cursor:pointer;text-decoration:none;box-shadow:3px 3px 0 rgba(0,0,0,.14);transition:transform .15s,box-shadow .15s;white-space:nowrap}
-.donate a:hover{transform:translateY(-2px);box-shadow:4px 5px 0 rgba(0,0,0,.18)}
-.donate span{font-size:.7rem;color:var(--ink-light);text-align:right;font-weight:600}
+
+
+
+
 .bar{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:.8rem 2rem 0;display:flex;align-items:center;gap:1rem}
 .badge{background:var(--accent);color:#fff;border-radius:100px;padding:.32rem .9rem;font-size:.8rem;font-weight:800}
 .filters{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:.8rem 2rem 1.2rem;display:flex;flex-wrap:wrap;gap:.5rem}
@@ -29,7 +29,7 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 .fb[data-c=lila].active{background:var(--lila)}
 .fb[data-c=rot].active{background:var(--rot)}
 .fb[data-c=tuerkis].active{background:var(--tuerkis)}
-.grid{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 2rem 5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.3rem}
+.grid{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 2rem 8rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.3rem}
 .card{background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:3px 4px 0 var(--shadow);cursor:pointer;transition:transform .18s,box-shadow .18s;border:1.5px solid rgba(0,0,0,.07);animation:fi .3s ease both}
 .card:hover{transform:translateY(-4px) rotate(.3deg);box-shadow:6px 9px 0 var(--shadow)}
 .card.hidden{display:none}
@@ -93,6 +93,10 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 .fix{font-size:.85rem;line-height:1.55}
 .fix b{font-weight:800}
 @media(max-width:600px){header,.filters,.bar,.grid{padding-left:1rem;padding-right:1rem}}
+
+.footer-donate{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.7rem 1rem .9rem;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-top:1px solid rgba(0,0,0,.07)}
+.footer-donate p{font-size:.72rem;color:var(--ink-light);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:0}
+.footer-donate img{height:32px;border:0;display:block}
 </style>
 </head>
 <body>
@@ -101,9 +105,7 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
     <h1>Methoden-Bibliothek</h1>
     <p>Coaching-Tools auf einen Blick</p>
   </div>
-  <div class="donate">
-    <a href='https://ko-fi.com/H2H31VE0E4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-  </div>
+
 </header>
 <div class="bar"><span class="badge" id="badge">-- Karten</span></div>
 <div class="filters" id="filters"><button class="fb active" data-c="alle">Alle</button></div>
@@ -280,5 +282,10 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()
 document.querySelector('.fb[data-c="alle"]').addEventListener('click',function(){filterBy('alle',this);});
 buildFilters();buildGrid();
 </script>
+
+<div class="footer-donate">
+  <p>Freiwilliger Energieausgleich</p>
+  <a href='https://ko-fi.com/H2H31VE0E4' target='_blank'><img height='32' style='border:0px;height:32px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+</div>
 </body>
 </html>
