@@ -6,7 +6,7 @@
 <title>Methoden-Bibliothek</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#ffffff;--paper:#ffffff;--ink:#111111;--ink-light:#666666;--accent:#F07800;--shadow:rgba(0,0,0,.10);--blau:#5b8dd9;--gruen:#5aaa6a;--orange:#e8954a;--lila:#9b6ecf;--rot:#d95f5f;--tuerkis:#3db8ac}
+:root{--bg:#ffffff;--paper:#ffffff;--ink:#111111;--ink-light:#666666;--accent:#F07800;--shadow:rgba(0,0,0,.10);--blau:#5b8dd9;--gruen:#5aaa6a;--orange:#e8954a;--lila:#9b6ecf;--rot:#d95f5f;--tuerkis:#3db8ac;--hellblau:#5bbcd9}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Nunito,sans-serif;background:#f7f7f5;color:var(--ink);min-height:100vh}
 header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;margin:0 auto;display:flex;flex-wrap:nowrap;align-items:flex-start;gap:1rem;justify-content:space-between}
@@ -25,7 +25,7 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 .fb[data-c=alle].active{background:var(--accent)}
 .fb[data-c=blau].active{background:var(--blau)}
 .fb[data-c=gruen].active{background:var(--gruen)}
-.fb[data-c=orange].active{background:var(--orange)}
+.fb[data-c=orange].active{background:var(--orange)}.fb[data-c=hellblau].active{background:var(--hellblau)}
 .fb[data-c=lila].active{background:var(--lila)}
 .fb[data-c=rot].active{background:var(--rot)}
 .fb[data-c=tuerkis].active{background:var(--tuerkis)}
@@ -37,7 +37,7 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 .stripe{height:7px}
 .card[data-c=blau] .stripe{background:var(--blau)}
 .card[data-c=gruen] .stripe{background:var(--gruen)}
-.card[data-c=orange] .stripe{background:var(--orange)}
+.card[data-c=orange] .stripe{background:var(--orange)}.card[data-c=hellblau] .stripe{background:var(--hellblau)}
 .card[data-c=lila] .stripe{background:var(--lila)}
 .card[data-c=rot] .stripe{background:var(--rot)}
 .card[data-c=tuerkis] .stripe{background:var(--tuerkis)}
@@ -49,7 +49,7 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 .cdauer{font-size:.67rem;font-weight:700;color:var(--ink-light);white-space:nowrap}
 .card[data-c=blau] .ccat{color:var(--blau)}
 .card[data-c=gruen] .ccat{color:var(--gruen)}
-.card[data-c=orange] .ccat{color:var(--orange)}
+.card[data-c=orange] .ccat{color:var(--orange)}.card[data-c=hellblau] .ccat{color:var(--hellblau)}
 .card[data-c=lila] .ccat{color:var(--lila)}
 .card[data-c=rot] .ccat{color:var(--rot)}
 .card[data-c=tuerkis] .ccat{color:var(--tuerkis)}
@@ -63,7 +63,7 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 .modal{background:var(--paper);border-radius:18px;max-width:860px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:8px 12px 0 rgba(26,31,46,.15);border:2px solid rgba(26,31,46,.08);transform:scale(.95) translateY(10px);transition:transform .22s}
 .overlay.open .modal{transform:scale(1) translateY(0)}
 .mstripe{height:8px;border-radius:16px 16px 0 0}
-.mstripe.blau{background:var(--blau)}.mstripe.gruen{background:var(--gruen)}.mstripe.orange{background:var(--orange)}.mstripe.lila{background:var(--lila)}.mstripe.rot{background:var(--rot)}.mstripe.tuerkis{background:var(--tuerkis)}
+.mstripe.blau{background:var(--blau)}.mstripe.gruen{background:var(--gruen)}.mstripe.orange{background:var(--orange)}.mstripe.lila{background:var(--lila)}.mstripe.rot{background:var(--rot)}.mstripe.tuerkis{background:var(--tuerkis)}.mstripe.hellblau{background:var(--hellblau)}
 .mhead{padding:1.4rem 1.5rem .5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .mcat{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
 .mtitle{font-family:'Gaegu',cursive;font-size:2rem;font-weight:700;line-height:1.1;letter-spacing:-0.07em}
@@ -204,10 +204,52 @@ steps:[['Position (A + B)','Das will ich! - Du-Botschaft, Angriff'],['Bedürfnis
 ja:['Festgefahrener oder wiederholter Konflikt / Streit','Ordnung in emotionale Situation bringen','De-emotionalisieren, de-dramatisieren'],
 nein:['Akute Eskalation (erst deeskalieren!)','Machtkonflikte ohne Lösungswillen'],
 trigger:['Wir reden aneinander vorbei ...','Es geht eigentlich gar nicht um das Sachthema.','Ich verstehe nicht, warum das so eskaliert.'],
-fixes:[['Klient:in kommt nicht auf tiefere Ebene','Nehmen wir an, die Sachfrage wäre gelöst - wäre der Konflikt dann vorbei? / Worum geht es wirklich?'],['Coach möchte Partei ergreifen','ALI, Separator']]}
+fixes:[['Klient:in kommt nicht auf tiefere Ebene','Nehmen wir an, die Sachfrage wäre gelöst - wäre der Konflikt dann vorbei? / Worum geht es wirklich?'],['Coach möchte Partei ergreifen','ALI, Separator']]},
+{id:'jetztbild',t:'Jetzt-Bild',u:'Ist-Zustand ehrlich erfassen, um Unsichtbares sichtbar und damit veränderbar zu machen',kat:'Darstellen',f:'orange',icon:'X',b:'Methodenkarten/Jetzt-Bild.png',b2:'',d:'35-45 Min',e:3,aus:['beobachtend','ehrlich vor perfekt','kein "sollte", nur "ist"'],
+steps:[['Überblick verschaffen','"Lassen Sie alle Lebensbereiche, Menschen, Themen, die gerade eine Rolle spielen, Revue passieren."'],['Karten anlegen','Für jeden Bereich eine Karte: Größe nach Bedeutung, Farbe nach Gefühl. Auf jede Karte: Bereich (sachlich) + persönliche Bewertung (subjektiv).'],['Bild legen','"Legen Sie die Karten so aus, dass ihre Anordnung stimmig und aussagekräftig ist. Was ist zentral, was Randthema?"'],['Bild prüfen und reflektieren','Stimmigkeits-Check, Nachjustieren erlaubt. Reflexion und Interpretation durch Klient:in.']],
+ja:['Start eines Coaching-Prozesses / Diagnostik','Vorbereitung für Zielarbeit','Orientierungslosigkeit'],
+nein:['Akute Krise, fokussiertes Einzelthema','Schnelle Lösung gefordert (Jetzt-Bild braucht Zeit)'],
+trigger:['"Alles ist zu viel, mir schwirrt der Kopf."','"Irgendwie fühlt sich mein Leben unstimmig an."'],
+fixes:[['Klient:in legt nur Baustellen','Ehrlichkeit hat Vorrang. Rückfrage: Gibt es auch etwas, das gut läuft?'],['Klient:in ist überwältigt','"Das ist viel, oder? Gut, dass es jetzt sichtbar ist. Wir arbeiten Stück für Stück."']]}
+,{id:'zielbild',t:'Ziel-Bild',u:'Gewünschte Zukunft konkret visualisieren und dadurch erreichbar machen',kat:'Darstellen',f:'orange',icon:'X',b:'Methodenkarten/Ziel-Bild.png',b2:'',d:'20-30 Min',e:2,aus:['ermutigend, visionär','wünschenswert statt realistisch'],
+steps:[['Zeitpunkt festlegen','"Wann möchten Sie Ihr Ziel erreicht haben?" → Datum notieren'],['Imaginativ in Ziel-Zustand gehen','Optional: Trance-Induktion. "Stellen Sie sich vor, es ist [Datum]. Sie haben Ihr Ziel erreicht. Sie sind zufrieden." → Zuerst emotional erleben und verankern lassen'],['Karten anlegen','"Schauen Sie sich in dieser Zukunft um." Für jeden Bereich eine Karte: Größe/Farbe stimmig. Auf jede Karte: Bereich (sachlich) + wie es sein soll (positiv).'],['Bild legen und prüfen','"Legen Sie Ihr Ziel-Bild. Wie soll Ihr Leben aussehen?" Check: "Fühlt es sich richtig an? Fehlt etwas? Ist etwas zu viel?"']],
+ja:['Nach dem Jetzt-Bild','Ziele sind diffus/unklar','Motivation fehlt (Ziel nicht greifbar)','Visionsentwicklung'],
+nein:['Sehr rational/skeptische Klient:innen','Ohne Jetzt-Bild','Akute Krise (erst Stabilisieren)'],
+trigger:['"Ich weiss nicht, was ich will..."','"Mir fehlt die Vision."'],
+fixes:[['Klient:in ist zu realistisch/vernünftig','Erst träumen, dann prüfen. JETZT ist alles erlaubt.'],['Klient:in findet kein Bild','Vision Pensionierung oder Hypnotrance'],['Klient:in entfernt nur Probleme','Was ist stattdessen da?']]}
+,{id:'aufstellung',t:'Aufstellung',u:'Beziehungen und Dynamiken räumlich sichtbar machen, um verborgene Muster zu erkennen',kat:'Darstellen',f:'orange',icon:'X',b:'Methodenkarten/Aufstellung.png',b2:'',d:'25-35 Min',e:3,aus:['Platz schaffen','explorativ anleiten'],
+steps:[['Fokus und Elemente klären','"Worum geht es? Wer/was gehört dazu?" → max. 5-7 Elemente'],['Elemente anordnen','"Stellen Sie die Elemente so auf, wie es sich für Sie richtig anfühlt." → Klient:in arrangiert intuitiv'],['Erkunden','Phase I: Gesamteindruck: Was zeigt sich? Phase II: Perspektiven einnehmen und erleben. "Wie ist es [X] zu sein? Was brauchen Sie als [X]?"'],['Veränderung gestalten','"Wie müsste die Aufstellung aussehen, damit es sich gut anfühlt?" Nach jeder Veränderung Metareflexion: "Was haben Sie gerade erlebt/erkannt?" → so viele Runden, bis es sich stimmig anfühlt'],['Transfer','"Zu welchen konkreten Schritten inspiriert das Bild?"']],
+ja:['Unausgesprochene Konflikte (Person nicht erreichbar)','Innere Konflikte (verschiedene Anteile in sich)','Perspektivwechsel nötig (Empathie entwickeln)'],
+nein:['Psychotische Erkrankungen (Realitätsverlust-Risiko)','Traumatische Beziehung (Gefahr Retraumatisierung)'],
+trigger:['"Ich wünschte, ich könnte ihm/ihr das sagen..."','"Ich verstehe nicht, warum sie/er so reagiert."','"Ein Teil von mir will X, der andere Y."'],
+fixes:[['Klient:in kann Perspektive nicht wechseln','Wirklich physischer Wechsel, Zeit lassen'],['Klient:in wird emotional','Raum für Emotionen, Pause, aussteigen']]}
+,{id:'leererstuhl',t:'Leerer Stuhl',u:'Dialog mit abwesenden Personen oder inneren Anteilen durch Perspektivwechsel führen',kat:'Darstellen',f:'orange',icon:'X',b:'Methodenkarten/Leerer_Stuhl.png',b2:'',d:'25 Min',e:3,aus:['Emotionen zulassen','ggf mehrere Runden','behutsam abschließen'],
+steps:[['Setup aufbauen','"Wir arbeiten mit einem leeren Stuhl. Stellen Sie sich vor, [Person/Anteil] sitzt dort." + 2 Stühle frontal gegenüber. Klären wer wo sitzt.'],['Klient:in spricht von Stuhl A','"Sagen Sie [Person/Anteil], was Sie sagen möchten. Sprechen Sie direkt zu ihr/ihm." Als Best Buddy hinter dem Klienten stehen, Rücken stärken, supporten.'],['Klient:in berichtet von Stuhl B','"Setzen Sie sich auf Stuhl B. Sie sind jetzt [Person/Anteil]. Wie geht es Ihnen? Was antworten Sie?"'],['Auflösen und Erkenntnisse sichern','Stühle abschütteln. "Was haben Sie gerade erlebt/erkannt?" Optional: Mehrere Runden']],
+ja:['Unausgesprochene Konflikte (Person nicht erreichbar)','Innere Konflikte (verschiedene Anteile in sich)','Perspektivwechsel nötig (Empathie entwickeln)'],
+nein:['Psychotische Erkrankungen (Realitätsverlust-Risiko)','Traumatische Beziehung (Gefahr Retraumatisierung)'],
+trigger:['"Ich wünschte, ich könnte ihm/ihr das sagen..."','"Ich verstehe nicht, warum sie/er so reagiert."','"Ein Teil von mir will X, der andere Y."'],
+fixes:[['Klient:in kann Perspektive nicht wechseln','Wirklich physischer Wechsel, Zeit lassen'],['Klient:in wird emotional','Raum für Emotionen, Pause, aussteigen']]}
+,{id:'reframing',t:'Reframing',u:'Perspektive wechseln und Situationen neu bewerten',kat:'Umdenken',f:'hellblau',icon:'X',b:'Methodenkarten/Reframing.png',b2:'',d:'15 Min',e:2,aus:['erst empathisch, dann reframen','spielerisch, vielseitig'],
+steps:[['Ausgangssituation','"Beschreiben Sie die Situation und wie Sie sie aktuell sehen/bewerten." (Problem, Bedeutung, Empfinden) → Ursprungsbewertung notieren'],['Rahmenwechsel anbieten','"Ich lade Sie ein, die Situation aus einem anderen Blickwinkel zu betrachten." → "Ihre Sicht ist valide! UND: Es gibt andere Perspektiven. Nicht besser, nur anders."'],['Neuen Rahmen entwickeln','Technik A: Positive Absicht suchen / Technik B: Kontext finden, in dem Eigenschaft vorteilhaft wäre / Technik C: Vorteile finden / Technik D: Perspektivwechsel in andere Rolle'],['Auswahl und Transfer','"Welche neuen Perspektiven haben sich ergeben? Welche sind hilfreich? Welche geben Handlungsspielraum?" → "Mit dieser neuen Perspektive, was ändert sich konkret?"']],
+ja:['Klient:in ist problemfokussiert, sieht keine Lösung','Klient:in wünscht Veränderung, hat aber keine Vision','Wenn größer und verrückter Denken hilfreich ist'],
+nein:['Akute Krise oder starke Emotionen (erst stabilisieren)','Sehr rationale/skeptische Typen (vorher Akzeptanz klären)'],
+trigger:['"Ich weiss gar nicht mehr weiter..."','"Alles ist festgefahren."','"Ich kann mir nicht vorstellen, wie es anders sein könnte."'],
+fixes:[['Klient:in: "Das ist unrealistisch"','Das darf es sein. Was wäre trotzdem anders?'],['Klient:in findet keinen Zugang','"Okay, lassen wir das Wunder weg. Was würde sich ändern, wenn das Problem gelöst wäre?"']]}
+,{id:'glaubenssatz',t:'Glaubenssatzarbeit',u:'Limitierende Überzeugungen identifizieren, hinterfragen und in förderliche umwandeln',kat:'Umdenken',f:'hellblau',icon:'X',b:'Methodenkarten/Glaubenssatz-1.png',b2:'Methodenkarten/Glaubenssatz-2.png',d:'20-25 Min',e:2,aus:['exakte Formulierungen','glaub-bar','online: behutsam!'],
+steps:[['In Musterschleife eintauchen','Was passiert da? (Essenz auf den Punkt bringen) Was macht [Verhalten] mit Ihnen auf tieferer Ebene? Was auf körperlicher Ebene? → Handzeichen geben, wenn voll im Gefühl!'],['Früheste Erinnerung explorieren','"Was ist Ihre früheste Erinnerung an dieses Gefühl? Welche plastische Situation zeigt sich? Was haben Sie über sich gedacht? Was gelernt?" → plakative Aussage. "Was macht der Satz mit Ihnen? Was bringt der Satz Gutes?"'],['Neuen Glaubenssatz entwickeln','"Wie würden Sie lieber über sich denken? Wie sehr glauben Sie sich diesen Satz? Was verändert sich durch den neuen Satz?" → knackiger Merksatz auf Probe für nächste Zeit'],['Verankern','"Mit welchen Alltags-Ritualen können Sie sich mit dem neuen Satz in Verbindung bringen?"']],
+ja:['Selbstzweifel, Perfektionismus, Versagensangst','Wiederholende Muster ("Immer das Gleiche...")','Blockaden trotz äußerer Fähigkeiten'],
+nein:['Instabile, ressourcenschwache Person','Tief verwurzelte Traumata (dann Psychotherapie)','Wenn konkrete Skills fehlen (dann Training)'],
+trigger:['"Ich denke immer, ich bin nicht gut genug."','"Ich kann nicht Nein sagen."','"Warum gerate ich immer an die Falschen?"'],
+fixes:[['Klient:in: "Das fühlt sich falsch an."','"Was wäre eine Version, die Sie glauben können?"'],['Neuer Glaubenssatz nur theoretisch/kognitiv','Experiment: "Wo können Sie das erleben?"']]}
+,{id:'werteentwicklung',t:'Werte- und Entwicklungsquadrat',u:'Zwischen gegensätzlichen Werten balancieren und das Entwicklungspotenzial erkennen',kat:'Umdenken',f:'hellblau',icon:'X',b:'Methodenkarten/Werte_und_Entwicklungsquadrat.png',b2:'',d:'20-30 Min',e:2,aus:['sichtbar machen','Schritt für Schritt','Ziel: verstehen, nicht bewerten'],
+steps:[['Ausgangswert (negativ) benennen','Welche Werte/Eigenschaften werden abgelehnt und verurteilt? z.B. skrupellos → mgl. verdrängte Selbstanteile'],['Gegenwert (positiv) finden','Was ist das positive Gegenteil? z.B. rücksichtsvoll → aktuelles Real-Selbst'],['Guten Kern erkennen','Welche gute Seite hat der [Ausgangswert], nicht die Person(!)? z.B. strategisch → aktuelles Ideal-Selbst'],['Entwertung verstehen','Was wäre zu viel des Guten? z.B. unterwürfig → potentielle Gefahren']],
+ja:['Selbstregulation im Konflikt: "Was darf ich hier lernen?"','Klient:in sieht Fehler nur im Außen','Selbstkritik (Ich bin zu...)'],
+nein:['Eindeutig destruktive Verhaltensweisen (Gewalt, Sucht)','Sehr komplexe Persönlichkeitsmuster (dann Therapie)'],
+trigger:['"Ich bin zu [X], aber ich kann nicht anders..."','"Der Mensch nervt mit seiner [Eigenschaft]!"','"Ich schwanke zwischen [X] und [Y]..."'],
+fixes:[['Oben beide Werte nicht positiv','Erst beide positiven Pole klar benennen'],['Entwicklungsrichtung unklar','Konkret benennen: Was davon brauche ich mehr?']]}
 ];
 
-var CV={blau:'#5b8dd9',gruen:'#5aaa6a',orange:'#e8954a',lila:'#9b6ecf',rot:'#d95f5f',tuerkis:'#3db8ac'};
+var CV={blau:'#5b8dd9',gruen:'#5aaa6a',orange:'#e8954a',lila:'#9b6ecf',rot:'#d95f5f',tuerkis:'#3db8ac',hellblau:'#5bbcd9'};
 
 function buildFilters(){
   var bar=document.getElementById('filters'),seen={};
