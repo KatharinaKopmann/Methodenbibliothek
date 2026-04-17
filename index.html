@@ -96,6 +96,16 @@ header{position:relative;z-index:1;padding:2.5rem 2rem .5rem;max-width:1200px;ma
 
 .coffee-btn{width:34px;height:34px;background:#f5f5f5;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:1.5px solid #e5e5e5;text-decoration:none;flex-shrink:0;transition:background .15s,transform .15s}
 .coffee-btn:hover{background:#fff3e8;transform:scale(1.1)}
+
+.mimg{cursor:pointer}
+.mimg:hover{opacity:.92}
+.mnote{width:100%;min-height:100px;border:1.5px solid rgba(0,0,0,.12);border-radius:8px;padding:.7rem .9rem;font-family:Nunito,sans-serif;font-size:.88rem;line-height:1.55;resize:vertical;background:var(--paper);color:var(--ink);outline:none;transition:border-color .15s}
+.mnote:focus{border-color:var(--accent)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.lbclose{position:fixed;top:1rem;right:1rem;width:40px;height:40px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:50%;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.lbclose:hover{background:rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
@@ -247,6 +257,24 @@ ja:['Selbstregulation im Konflikt: "Was darf ich hier lernen?"','Klient:in sieht
 nein:['Eindeutig destruktive Verhaltensweisen (Gewalt, Sucht)','Sehr komplexe Persönlichkeitsmuster (dann Therapie)'],
 trigger:['"Ich bin zu [X], aber ich kann nicht anders..."','"Der Mensch nervt mit seiner [Eigenschaft]!"','"Ich schwanke zwischen [X] und [Y]..."'],
 fixes:[['Oben beide Werte nicht positiv','Erst beide positiven Pole klar benennen'],['Entwicklungsrichtung unklar','Konkret benennen: Was davon brauche ich mehr?']]}
+,{id:'pmw',t:'Plus-Minus-Weiterentwicklung',u:'Aus "Mist" Gold machen – Nachteile einer Lösung systematisch in Vorteile verwandeln',kat:'Planen',f:'gruen',icon:'X',b:'Methodenkarten/PMW.png',b2:'',d:'30 Min',e:2,aus:['1+2 ermutigend','3 validierend','konkrete Lösungen'],
+steps:[['Lösung auswählen','Aus Brainstorming: "Welche Lösung erscheint Ihnen realistisch, zu groß, zu verrückt – und gleichzeitig irgendwie attraktiv?"'],['Plus – Was wäre gut daran?','"Sammeln Sie ALLE Vorteile, die diese Lösung hätte." → ALLES aufschreiben, auch "verrückte" Vorteile'],['Minus – Was spricht dagegen?','"Jetzt sammeln Sie ALLE Nachteile, alle Bedenken, alles was dagegen spricht." (Risiken, Ängste, Verluste, Gegner) → Ehrlich sein! Alle Bedenken ernst nehmen. Nicht kleinreden.'],['Weiterentwicklung','Für JEDEN einzelnen Nachteil: "Wie können Sie diesen Punkt kompensieren, SO DASS die Vorteile erhalten bleiben?" → lösungsorientiert, kreativ, hartnäckig!']],
+ja:['Große Entscheidung mit Pro & Contra','"Traum-Lösung", die unrealistisch scheint','Festgefahren zwischen "Ja/Nein, aber..."'],
+nein:['Eindeutig destruktive Ideen (z.B. selbstschädigend)','Lösung nicht wirklich attraktiv','Zu früh im Prozess'],
+trigger:['"Ich würde so gerne, aber..."','"Das wäre toll, geht aber nicht, weil..."'],
+fixes:[['Klient:in entwickelt unrealistisch weiter','KONKRETE Schritte: "Wie GENAU ..."'],['Klient:in gibt zu früh auf','"Wen könnten Sie fragen? Wer hat das schon gelöst? Was würde [Experte] tun?"']]}
+,{id:'rueckwaerts',t:'Rückwärtsanalyse',u:'Vom Ziel rückwärts planen – große Träume in konkrete Schritte heute verwandeln',kat:'Planen',f:'gruen',icon:'X',b:'Methodenkarten/Rückwärtsanalyse.png',b2:'',d:'30 Min',e:2,aus:['konkretisierend','analytisch','realistisch'],
+steps:[['Spalte 3: Endzustand/Ziel festlegen','"Was genau wollen Sie erreichen (Endzustand beschreiben)? Wann soll es erreicht sein (Zeitpunkt konkret festlegen)?" → Aspekte konkretisieren'],['Spalte 2: Meilenstein zur Halbzeit','Für jeden Zielaspekt: "Was muss bis zur Halbzeit erreicht sein, damit der Plan aufgeht?"'],['Spalte 1: Erste Schritte heute','"Was muss BIS HEUTE / DIESE WOCHE (oder zu konkretem Datum) passieren, damit Sie zur Halbzeit dort sind?"'],['Commitment','"Womit fangen Sie an? Was ist dringlich/wichtig/bringt Schwung?" → Top 3 auswählen.']],
+ja:['Großes, weit entferntes oder komplexes Ziel','"Ich weiß nicht, wo ich anfangen soll"','Nach Vision Pensionierung, Ziel-Bild, PMW'],
+nein:['Kurzfristige Ziele (dann direkter planen)','Unklares Ziel (erst klären!)','Ziel ist unrealistisch (dann erst PMW)'],
+trigger:['"Wo soll ich nur anfangen?"','"Das ist so weit weg!"'],
+fixes:[['Klient:in entwickelt unrealistisch weiter','KONKRETE Schritte: "Wie GENAU ..."'],['Klient:in gibt zu früh auf','"Wen könnten Sie fragen? Wer hat das schon gelöst? Was würde [Experte] tun?"']]}
+,{id:'inneresteam',t:'Inneres Team',u:'Innere Stimmen sichtbar machen, Konflikte zwischen Anteilen klären und innere Einigkeit herstellen',kat:'Darstellen',f:'orange',icon:'X',b:'Methodenkarten/inneres_Team.png',b2:'',d:'40 Min',e:3,aus:['neugierig','alle wertschätzend','spielerisch, aber Ernst'],
+steps:[['Situation/Konflikt benennen','"Beschreiben Sie die Situation, in der Sie innerlich hin- und hergerissen sind."'],['Teammitglieder erheben','"Welche inneren Stimmen/Anteile melden sich zu dieser Situation?" → auf Karten notieren: sprechender Name + Statement + ggf. Bedürfnis + Symbol. Typisch: Kritiker, Ängstliche, Draufgänger, Vernünftige, inneres Kind, Perfektionist, Rebellin, Beschützer'],['Team räumlich aufstellen','Auf dem Boden aufstellen. Position analysieren: Nähe, Isolation, Dominanz ...'],['Die Team-Sitzung','Klient spricht reihum für jeden Anteil, in Ich-Form! Teamsitzung: als Coach moderieren, alle Anteile zu Wort kommen lassen. Teamleiter (Klient) entscheidet zum Schluss!']],
+ja:['Innere Widersprüche, Ambivalenz','Entscheidungsblockaden trotz klarer Faktenlage','Selbstsabotage ("Ich weiß, was ich tun sollte, aber...")'],
+nein:['Psychotische oder Dissoziative Störungen','Sehr rationale Menschen (lehnen "Spielerei" ab)'],
+trigger:['"Ein Teil von mir will X, ein anderer Y..."','"Ich kann mich nicht entscheiden."','"Ich sabotiere mich selbst."'],
+fixes:[['Klient:in findet sehr viele, es wird unübersichtlich','Vollständig erheben, dann clustern'],['Anteil zu dominant, gegenseitige Blockade, kein Teamleiter','Alle hören, Bedürfnisse verstehen, gemeinsame Lösung, Teamleiter entscheidet!']]}
 ];
 
 var CV={blau:'#5b8dd9',gruen:'#5aaa6a',orange:'#e8954a',lila:'#9b6ecf',rot:'#d95f5f',tuerkis:'#3db8ac',hellblau:'#5bbcd9'};
@@ -304,26 +332,50 @@ function openModal(k){
   document.getElementById('mu').textContent=k.u;
   var dots=[1,2,3].map(function(n){return '<div class="ed'+(n<=k.e?' on':'')+'"'+(n<=k.e?' style="--dc:'+col+'"':'')+'>&#8203;</div>'}).join('');
   var imgHtml='';
-  if(k.b){imgHtml+='<img class="mimg" id="mimg1" src="'+k.b+'" alt="'+k.t+'">';}
-  if(k.b2){imgHtml+='<img class="mimg hidden" id="mimg2" src="'+k.b2+'" alt="'+k.t+' Text"><button class="toggle-btn" id="tbtn">&#128196; Textversion anzeigen</button>';}
+  if(k.b){imgHtml+='<img class="mimg" id="mimg1" src="'+k.b+'" alt="'+k.t+'" style="cursor:pointer" onclick="openLightbox(this.src)">';}
+  if(k.b2){imgHtml+='<img class="mimg" id="mimg2" src="'+k.b2+'" alt="'+k.t+' Text" style="cursor:pointer" onclick="openLightbox(this.src)">';}
   var steps=k.steps.map(function(s,i){return '<li><span class="snum" style="background:'+col+'">'+(i+1)+'</span><div><div class="stxt"><b>'+s[0]+'</b></div>'+(s[1]?'<div class="sqt">'+s[1]+'</div>':'')+'</div></li>'}).join('');
   var ja=k.ja.map(function(t){return '<span class="tag pos">&#10003; '+t+'</span>'}).join('');
   var nein=k.nein.map(function(t){return '<span class="tag neg">&#10007; '+t+'</span>'}).join('');
   var trig=k.trigger.map(function(t){return '<span class="tag">'+t+'</span>'}).join('');
   var fixes=k.fixes.map(function(f){return '<div class="fix"><b>Situation:</b> '+f[0]+'<br><b>Fix:</b> '+f[1]+'</div>'}).join('');
-  document.getElementById('mb').innerHTML=imgHtml+'<div class="mstats"><div><div class="sl">Dauer</div><div class="sv">&#9201; '+k.d+'</div></div><div><div class="sl">Energie</div><div class="sv" style="display:flex;gap:4px;margin-top:3px">'+dots+'</div></div><div><div class="sl">Ausführung</div><div class="sv">'+k.aus.join(' &middot; ')+'</div></div></div><div class="msec"><h3>Kernablauf</h3><ul class="slist">'+steps+'</ul></div><div class="msec"><h3>Wann nutze ich das?</h3><div class="tags">'+ja+nein+'</div></div>'+(k.trigger.length?'<div class="msec"><h3>Typische Aussagen</h3><div class="tags">'+trig+'</div></div>':'')+(k.fixes.length?'<div class="msec"><h3>Was tue ich, wenn ...?</h3><div class="fixes">'+fixes+'</div></div>':'');
-  var tb=document.getElementById('tbtn');
-  if(tb){var show=false;tb.addEventListener('click',function(){show=!show;document.getElementById('mimg2').classList.toggle('hidden',!show);tb.innerHTML=show?'&#128444; Hauptkarte anzeigen':'&#128196; Textversion anzeigen';});}
+  var savedNote=localStorage.getItem('note_'+k.id)||'';
+  document.getElementById('mb').innerHTML=imgHtml+'<div class="mstats"><div><div class="sl">Dauer</div><div class="sv">&#9201; '+k.d+'</div></div><div><div class="sl">Energie</div><div class="sv" style="display:flex;gap:4px;margin-top:3px">'+dots+'</div></div><div><div class="sl">Ausführung</div><div class="sv">'+k.aus.join(' &middot; ')+'</div></div></div><div class="msec"><h3>Kernablauf</h3><ul class="slist">'+steps+'</ul></div><div class="msec"><h3>Wann nutze ich das?</h3><div class="tags">'+ja+nein+'</div></div>'+(k.trigger.length?'<div class="msec"><h3>Typische Aussagen</h3><div class="tags">'+trig+'</div></div>':'')+(k.fixes.length?'<div class="msec"><h3>Was tue ich, wenn ...?</h3><div class="fixes">'+fixes+'</div></div>':'')+'<div class="msec"><h3>&#9997; Meine systemischen Fragen</h3><textarea class="mnote" id="mnote" data-kid="'+k.id+'" placeholder="Eigene Fragen, Variationen, Ideen ...">'+savedNote+'</textarea></div>';
+  // save note on input
+  setTimeout(function(){
+    var ta=document.getElementById('mnote');
+    if(ta){ta.addEventListener('input',function(){localStorage.setItem('note_'+ta.dataset.kid,ta.value);});}
+  },50);
+
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('mx').addEventListener('click',closeModal);
 document.getElementById('overlay').addEventListener('click',function(e){if(e.target.id==='overlay')closeModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
 document.querySelector('.fb[data-c="alle"]').addEventListener('click',function(){filterBy('alle',this);});
 buildFilters();buildGrid();
+
+function openLightbox(src){
+  document.getElementById('lbimg').src=src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.getElementById('lightbox').addEventListener('click',function(e){
+  if(e.target.id==='lightbox'||e.target.id==='lbimg')closeLightbox();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeLightbox();closeModal();}
+});
 </script>
 
+
+<div class="lightbox" id="lightbox">
+  <button class="lbclose" onclick="closeLightbox()">&#10005;</button>
+  <img id="lbimg" src="" alt="">
+</div>
 </body>
 </html>
